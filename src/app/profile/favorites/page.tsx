@@ -1,40 +1,9 @@
 import React from "react";
 import Link from "next/link";
-
-const FAVORITE_VENDORS = [
-  {
-    id: "1",
-    category: "Fotografi Pernikahan",
-    name: "Lumina Photography",
-    rating: 4.9,
-    reviews: 120,
-    location: "Jakarta Selatan",
-    price: "Rp 12.500.000",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDFD95-IkeE4ucEKKxL42l1XYjSYJS8WrZnUe_VaSz8OSvpQ6Aj_avhId_Ujmib2Irk4su5cr8Ryua6KjDq3QX7319b4C9YL8liKWqZW-nrdqLCgo__2doNbn-J30_piZCEmHAGI0ZYhLQ8oW_pHCUq-yJFbn7SMQ_y_Qmuk1HRMhDz9ScamH03Myu1yoc9SsQOPSKuHnqvn91caeCtBaTr82WvUgCEN79nkyfoNEmpbJ1GhTtxM2bz_GfY8OxUrT3l3r665LneZayV"
-  },
-  {
-    id: "2",
-    category: "Traditional Catering",
-    name: "Katering Nusantara",
-    rating: 4.8,
-    reviews: 85,
-    location: "Bandung",
-    price: "Rp 85.000/pax",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDlYZeus3-9PM1fP4ojnrPXB3tu2RXsnqMNfa9EtaOfnszdFZ-Kqb7WgsL1HDL687gA_1IlJZD8lhAuuiBBIuAuVtnzftTLZX0KsdwX68qKJ33j8H_ZMDrlu1Rnf09KoGGlDZfL3h_8N_iiZslLzJG6Tz3a9xyjy4AecDI_usBvpWreOJVFQKbmrUP9yeimhHiatUBAkgDNYUhZyM3Sw9QnbdoBIlw0XkKDSwsZ-Mpgtk5E8Imd5NpMz6NpomTwpnurm8TL5T0vhvOP"
-  },
-  {
-    id: "3",
-    category: "Rustic Decoration",
-    name: "Griya Dekor",
-    rating: 4.7,
-    reviews: 56,
-    location: "Tangerang",
-    price: "Rp 25.000.000",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA318tXusr_oGDqwB1BAn1QKh-PuKVOCS_yWBRq4JzUnXCrHWAKeUzLq7sgcbcHNi_qTtJDDmbbZqdJmzJ8120R29sTdEnTHw1NhpE_F67E5DLgPFTTJb90S7rn_tC7YOZgXMnq0sVZe4WhtphBN_7rB9c27kJ3-dGHsFUUhoFnMS4iJYMYnTkK9RFGANySqsE4OIE0GyCHM1aHm4bIXElv3Ib8g7PP8zV7yGEP_uHXLCgwqmAcu5AYFZmiCFP75eTWUR0gTqZfklLh"
-  }
-];
+import { VENDORS } from "@/lib/mock-data";
 
 export default function FavoriteVendors() {
+  const FAVORITE_VENDORS = VENDORS.slice(0, 3);
   return (
     <div className="bg-background-light text-[#171112] min-h-screen font-jakarta antialiased">
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">

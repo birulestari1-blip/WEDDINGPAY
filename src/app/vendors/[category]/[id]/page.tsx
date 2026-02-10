@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import { VENDORS } from "@/lib/mock-data";
 
 export default async function VendorProfilePage({ params }: { params: Promise<{ category: string, id: string }> }) {
   const { category, id } = await params;
+  const vendor = VENDORS.find(v => v.id === id) || VENDORS[0];
 
   return (
     <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen pb-32 font-plus-jakarta">
@@ -29,15 +31,15 @@ export default async function VendorProfilePage({ params }: { params: Promise<{ 
           <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
           <div className="px-4 -mt-16 relative z-10 flex flex-col items-center">
             <div className="p-1 rounded-full bg-background-dark">
-              <div className="w-32 h-32 rounded-full border-4 border-wedding-gold bg-cover bg-center shadow-2xl" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZvGB9GEk_Jz_rj9gNIUx2mECImQBc_dqnhy7aXjRgIflKyE2xPCntziI2KrKDjVJKT-tCXMxEF2u-O-EZ_U3UT2vS0v7kIKBdeExTQyIlTMF6fyDa47sj5RAbrbGkMbqe7ULM50FUC32OwOo9uXKqY16NrSlr3y1c4gkgQzxuLFZFbjJmKbdNvcr3SSE549KCsx0blf2HBpemB2db29XIbg1mOPVxsGw1sNvn0koxmMjJfIeqwQ-uV35QI3M-aWM6qoNoQRohQ277')" }}></div>
+              <div className="w-32 h-32 rounded-full border-4 border-wedding-gold bg-cover bg-center shadow-2xl" style={{ backgroundImage: `url('${vendor.image}')` }}></div>
             </div>
             <div className="mt-4 text-center">
               <div className="flex items-center justify-center gap-2">
-                <h2 className="text-2xl font-bold tracking-tight dark:text-white text-slate-900">Signature Catering</h2>
-                <span className="material-symbols-outlined text-wedding-gold text-xl fill-1">verified</span>
+                <h2 className="text-2xl font-bold tracking-tight dark:text-white text-slate-900">{vendor.name}</h2>
+                {vendor.isVerified && <span className="material-symbols-outlined text-wedding-gold text-xl fill-1">verified</span>}
               </div>
               <p className="text-slate-400 flex items-center justify-center gap-1 mt-1">
-                <span className="material-symbols-outlined text-sm">location_on</span> Jakarta, Indonesia
+                <span className="material-symbols-outlined text-sm">location_on</span> {vendor.location}
               </p>
               <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 bg-wedding-gold/20 rounded-full border border-wedding-gold/30">
                 <span className="material-symbols-outlined text-xs text-wedding-gold fill-1">shield_with_heart</span>

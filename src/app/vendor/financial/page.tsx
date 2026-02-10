@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { VENDOR_STATS } from "@/lib/mock-data";
 
 export default function VendorFinancialDashboardPage() {
   return (
@@ -27,7 +28,7 @@ export default function VendorFinancialDashboardPage() {
             <div className="bg-blue-600 rounded-xl p-5 text-white shadow-lg shadow-blue-600/20 mb-4 relative overflow-hidden">
               <div className="relative z-10">
                 <p className="text-sm font-medium opacity-80">Total Pendapatan</p>
-                <h2 className="text-3xl font-extrabold mt-1 tracking-tight">Rp 45.000.000</h2>
+                <h2 className="text-3xl font-extrabold mt-1 tracking-tight">{VENDOR_STATS.totalRevenue}</h2>
                 <div className="flex items-center gap-1 mt-2 text-[12px] bg-white/20 w-fit px-2 py-0.5 rounded-full">
                   <span className="material-symbols-outlined text-[14px]">trending_up</span>
                   <span>+12% bulan ini</span>
@@ -44,7 +45,7 @@ export default function VendorFinancialDashboardPage() {
                   <span className="material-symbols-outlined text-amber-500 text-[20px]">lock_clock</span>
                   <p className="text-[12px] font-semibold text-slate-500 dark:text-slate-400">Escrow</p>
                 </div>
-                <p className="text-lg font-bold">Rp 12.5jt</p>
+                <p className="text-lg font-bold">{VENDOR_STATS.escrowBalance}</p>
                 <p className="text-[10px] text-slate-400 mt-1">Tertahan sistem</p>
               </div>
               <div className="bg-emerald-500/5 dark:bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4">
@@ -52,7 +53,7 @@ export default function VendorFinancialDashboardPage() {
                   <span className="material-symbols-outlined text-emerald-500 text-[20px]">check_circle</span>
                   <p className="text-[12px] font-semibold text-emerald-500/80">Siap Cair</p>
                 </div>
-                <p className="text-lg font-bold text-emerald-500">Rp 8.000k</p>
+                <p className="text-lg font-bold text-emerald-500">{VENDOR_STATS.readyToWithdraw}</p>
                 <p className="text-[10px] text-emerald-500/60 mt-1">Bisa ditarik</p>
               </div>
             </div>

@@ -2,9 +2,11 @@
 
 import React, { use } from "react";
 import Link from "next/link";
+import { VENDORS } from "@/lib/mock-data";
 
 export default function ChatDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
+  const vendor = VENDORS.find(v => v.id === id) || VENDORS[0];
   return (
     <div className="relative mx-auto flex h-screen max-w-md flex-col bg-white overflow-hidden shadow-2xl font-manrope antialiased">
       <header className="sticky top-0 z-30 border-b border-gray-100 px-4 py-3 bg-white/85 backdrop-blur-md">
@@ -15,13 +17,13 @@ export default function ChatDetail({ params }: { params: Promise<{ id: string }>
             </button>
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="h-10 w-10 rounded-full bg-cover bg-center border border-gray-200" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCpvQLK-sNThK0XP2jqb7a_cOSBhaQvQaicDV9I5up1YhbiEKm946MrpMbX9ur4KdO3R3rE0e4LZmv0TjF8HzEWoPKn1rMn8uMVePF4sMcKYpHl_45bQHDPORUy3tnvVsc_aPk2lFUSXHDMFehM4yh8fKMqCGBAIMAj0xOSCVxfpO9R30y6NJTgYy0wt_osoBvZhngwovSrRJkmA3rc0-iiogiWtDBeNw81XyukZO0RWOFk9uI3tGICxPtXJrnosWqTAGqMR4E7VPZ1')" }}></div>
+                <div className="h-10 w-10 rounded-full bg-cover bg-center border border-gray-200" style={{ backgroundImage: `url('${vendor.image}')` }}></div>
                 <div className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-green-500"></div>
               </div>
               <div>
                 <div className="flex items-center gap-1">
-                  <h2 className="text-[#111418] text-sm font-bold leading-none">Griya Wedding</h2>
-                  <span className="material-symbols-outlined text-[#196ee6] text-[16px] !fill-1">verified</span>
+                  <h2 className="text-[#111418] text-sm font-bold leading-none">{vendor.name}</h2>
+                  {vendor.isVerified && <span className="material-symbols-outlined text-[#196ee6] text-[16px] !fill-1">verified</span>}
                 </div>
                 <p className="text-slate-500 text-xs font-medium">Online</p>
               </div>

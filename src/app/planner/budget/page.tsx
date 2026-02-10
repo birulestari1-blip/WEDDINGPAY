@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { BUDGET_STATS } from "@/lib/mock-data";
 
 export default function BudgetSimulationPage() {
   return (
@@ -35,18 +36,18 @@ export default function BudgetSimulationPage() {
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex-1">
                     <p className="text-white/70 text-xs mb-1">Sisa Anggaran</p>
-                    <h2 className="text-3xl font-extrabold tracking-tight mb-4">Rp 12.500.000</h2>
+                    <h2 className="text-3xl font-extrabold tracking-tight mb-4">Rp {BUDGET_STATS.remaining.toLocaleString('id-ID')}</h2>
                     <div className="space-y-2">
                       <div className="flex justify-between text-[11px]">
                         <span className="text-white/60">Terpakai</span>
-                        <span className="font-bold">Rp 107.500.000</span>
+                        <span className="font-bold">Rp {BUDGET_STATS.used.toLocaleString('id-ID')}</span>
                       </div>
                       <div className="h-1.5 w-full bg-white/20 rounded-full overflow-hidden">
-                        <div className="h-full bg-[#E4B4B4] rounded-full shadow-[0_0_8px_rgba(228,180,180,0.6)]" style={{ width: "89%" }}></div>
+                        <div className="h-full bg-[#E4B4B4] rounded-full shadow-[0_0_8px_rgba(228,180,180,0.6)]" style={{ width: `${BUDGET_STATS.percentage}%` }}></div>
                       </div>
                       <div className="flex justify-between text-[10px] pt-1">
-                        <span className="text-white/50">Total Budget: Rp 120.000.000</span>
-                        <span className="text-[#E4B4B4] font-bold">89.5%</span>
+                        <span className="text-white/50">Total Budget: Rp {BUDGET_STATS.total.toLocaleString('id-ID')}</span>
+                        <span className="text-[#E4B4B4] font-bold">{BUDGET_STATS.percentage.toFixed(1)}%</span>
                       </div>
                     </div>
                   </div>

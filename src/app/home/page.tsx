@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { VENDORS } from "@/lib/mock-data";
 
 export default function Home() {
   return (
@@ -132,29 +133,12 @@ export default function Home() {
               <h3 className="text-lg font-bold text-wedding-navy">
                 Vendor Terpercaya
               </h3>
-              <a className="text-sm font-semibold text-wedding-accent" href="#">
+              <Link className="text-sm font-semibold text-wedding-accent" href="/vendors">
                 Lihat Semua
-              </a>
+              </Link>
             </div>
             <div className="space-y-6">
-              {[
-                {
-                  id: 1,
-                  name: "Lumina Grand Ballroom - Jakarta",
-                  type: "Venue & Catering • 500 Pax",
-                  price: "Rp 125.000.000",
-                  rating: "4.9",
-                  image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB3hgz1jU6FzQHZctbKWUnlaVy_7fN70HTieab4RxOhJ7nSkiXUDUNjFv4-FY-Vl-jKi9vcV_IRwCJX1MIG4YaSkTxMqWv0ZfdwVyLU84chxlFIvNvB2k3DTkNzs2APwSx9nEl94Kf22I5Mcat5gx862wP_KHMer3GWCYKWv8tTE2nquI_udnYtJA46cVuTrA7ye1PcNk6JC8UnXMlqMAqyeqcx0smxZdUEwvxgfe3VUDX2OW3P_eJR_slKMs4WdkWJKU3nScDmQ_tO"
-                },
-                {
-                  id: 2,
-                  name: "Rustic Dream Decoration",
-                  type: "Decoration • Full Package",
-                  price: "Rp 45.000.000",
-                  rating: "4.8",
-                  image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAdoXW2QehmrvUx_4l3b5DqXmEX-FoZ7UAVReTGpzFc3kJSnLOBwkS02yBa4BD7gTHOrse06JVvWdfj_E5Tb186W-vtKftceDAhiNWZFoXGWDZfhsAJ0uKLYsp52LUlk1_wZl7DHe0F2pFOplHUtQj0IxTPArHLj_2P5nBYOSRO9pSBp5bGPXurTqqlE0afk3i9Z4plz7krykjIdlRuGTOLSl1UmsOaUyCEvMOKCrh0kjFAcwUyMTi4gkXdAHrRujugeBFslHoNm2rx"
-                }
-              ].map((vendor) => (
+              {VENDORS.slice(0, 3).map((vendor) => (
                 <div key={vendor.id} className="group">
                   <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-3">
                     <img
@@ -179,7 +163,7 @@ export default function Home() {
                     <h4 className="font-bold text-wedding-navy">
                       {vendor.name}
                     </h4>
-                    <p className="text-xs text-gray-500">{vendor.type}</p>
+                    <p className="text-xs text-gray-500">{vendor.subCategory}</p>
                     <div className="mt-2 flex items-end justify-between">
                       <div>
                         <div className="text-[10px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded inline-block mb-1">

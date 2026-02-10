@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { ADMIN_STATS } from "@/lib/mock-data";
 
 export default function AdminOpsDashboardPage() {
   return (
@@ -29,7 +30,7 @@ export default function AdminOpsDashboardPage() {
                 </div>
                 <p className="text-[11px] font-bold text-gray-500 uppercase leading-tight">Verifikasi KYC Vendor</p>
                 <div className="flex items-center gap-2 mt-2">
-                  <span className="text-xl font-extrabold">24</span>
+                  <span className="text-xl font-extrabold">{ADMIN_STATS.pendingKYC}</span>
                   <span className="text-[10px] bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 px-1.5 py-0.5 rounded font-bold">Review</span>
                 </div>
                 <div className="absolute -right-2 -bottom-2 text-purple-100/20 dark:text-purple-900/10">
@@ -42,7 +43,7 @@ export default function AdminOpsDashboardPage() {
                 </div>
                 <p className="text-[11px] font-bold text-gray-500 uppercase leading-tight">Manajemen Dispute</p>
                 <div className="flex items-center gap-2 mt-2">
-                  <span className="text-xl font-extrabold">12</span>
+                  <span className="text-xl font-extrabold">{ADMIN_STATS.activeDisputes}</span>
                   <span className="text-[10px] bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-1.5 py-0.5 rounded font-bold">Mediasi</span>
                 </div>
                 <div className="absolute -right-2 -bottom-2 text-red-100/20 dark:text-red-900/10">
@@ -61,9 +62,9 @@ export default function AdminOpsDashboardPage() {
             </div>
             <div className="flex gap-3 overflow-x-auto no-scrollbar px-4">
               {[
-                { label: "Total GMV", val: "Rp 1.2B", trend: "+15%", color: "text-emerald-500" },
-                { label: "Escrow Hold", val: "Rp 450M", trend: "84 Active Trx", color: "text-gray-500" },
-                { label: "Net Revenue", val: "Rp 180M", trend: "+8%", color: "text-emerald-500" },
+                { label: "Total GMV", val: ADMIN_STATS.gmv, trend: "+15%", color: "text-emerald-500" },
+                { label: "Escrow Hold", val: ADMIN_STATS.escrow, trend: "84 Active Trx", color: "text-gray-500" },
+                { label: "Net Revenue", val: ADMIN_STATS.revenue, trend: "+8%", color: "text-emerald-500" },
               ].map((item, i) => (
                 <div key={i} className="flex-none w-36 bg-white dark:bg-slate-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800">
                   <p className="text-[10px] font-bold text-gray-400 uppercase">{item.label}</p>

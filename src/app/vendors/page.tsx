@@ -1,20 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import { VENDORS } from "@/lib/mock-data";
 
-const topCatering = [
-  { id: 1, name: "Saffron Catering & Events", price: "Rp 120rb/pax", rating: "4.9", reviews: 128, image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAt6j-mZ1sroIDbWrc-wq8h6aLQboJQTKC6xJkAJxB89zKMAtmjSqeBB0rBGHhGnhGFa1a4bqnz31QBrNWpvdJvrdpBgy9vhCaqgsoDcRi3Q0A-ii82u9EwFAQNF7VK19q2R1ZuDxtWoh_XRQRVR2mgqT80h_mOJWi3Rzkr5_Iwg_ncsU5pjbD1T5eOZA3Dcsuh2o6wCmBJYzSVUsq7wVZjHiSB77gbm21baEBBX9GXoo1IfIQg6USXG7X3GrIo3UaX3EN-y0KjOioo" },
-  { id: 2, name: "Larasati Food Signature", price: "Rp 150rb/pax", rating: "4.8", reviews: 94, image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBzPls4ms9mfkbXAQ4eUgekMiY4Vz2ZZmTerD3OtA0atbe84aDYmftdFl6PEqcmmbUnIc0VZgYawxVEwMFkvXpDP7I3RltB1XofV0bud86No_B02dCPfG5f6wKRS9TJehiru5-CkaaYxFaHHu3VdzF8usQk2TxQ77s68OcQ7Z5gEnsARe__RM9WeRa40SnDUTmjMuqShXS5di_ugntaieYnjYfAITirgRk21cnfAEsWAJdAxY141K2M6SvPGuPQcBunqoI0XLY9l7TO" },
-];
-
-const topVenues = [
-  { id: 1, name: "The Ritz-Carlton Grand Hall", price: "Mulai Rp 250jt", rating: "5.0", reviews: 210, image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBjZT8tuUQvKQPzoeOFviF3bKr5IZNgFmy4iKNJU0vB7medu5sTlHMrawORCq5ZF4KfPEF0uDqhh3ETsYtX87aXqfqykyJlDhEGtLG4tzeNtlnN9KYLhWxEbv07McAdyxp4_hGCuF6ijHL-yFsNCp8YDGfyB2MGn_OkyL3L3e0PSCBKtV3eYiejPu0WxMjR7IVeVr1QJ5G4kXZ-L4WdDNJbyjkYyoTbtZ1LRfE1jEK5v-Z0UwSnn3wiSBWmvytXYSvBs8vMUchIxPRQ" },
-  { id: 2, name: "Green Forest Garden Resort", price: "Mulai Rp 45jt", rating: "4.7", reviews: 85, image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCOr-Axhd_T1f57X-l3av6SDYOxGL7cSS0LRPGLS9uPnOPjTPn8_ideHWJePAJ48gcpr2IK0JVoAiw9PO_utZY5bwKjsG_iYRpyBj3A4Y-zqJmkwvEHTzSllN5YLMRBNauCCXjFrhOMNYTClwRc5R6Y7xxT8vLQAFycLKmhdtBq-eJghgnRoFXhLVc2vLkLwAIrKI1jE0P_69ecKmbLIX-Dl1l7dfP12z_KNryx2BuuSbGKySsFIgXMNK7ijKbBAs9HhSUi7ikYT-sG" },
-];
-
-const results = [
-  { id: 1, category: "Fotografer", name: "Eternal Moments Photography", price: "Rp 12.500.000", rating: "4.9", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA1S6EFyBNw4lhA__w7LkF8HvAOm_xMsYlKzbRC-oyKDLUNkcrrlIv3jmhFExQyzvpG-cUY-WxdDuuSZvjtMQ_d6ZAyLwzYOCqV0v7aiqkWgHsW7aWjLXTY5GexZULCnqetPOJPw_4XS-zfOoErKLBUktkXBWFa5s522iR-7By9UHuoYlbwNYql0kcBfENCOKh0HGV-1_OxSjk6NoBGLQbAqsnsF5zA5HkGlBHsJpRBqErgGOI0lDzp1D0FZyecGJNIqipUp4YR0g40" },
-  { id: 2, category: "Dekorasi", name: "Flora & Bloom Decoration", price: "Mulai Rp 15.000.000", rating: "4.6", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB7qRYDBLJ5MzkmTSqOhjGkM0q5JVJfAMMNcF9dtdd3-qdulpG65oD7-XRIZw4T787nc4O-voh6cToiKWSezO6hPqotb8R9PGokNmj7S2OEVcWambOOrkYll3BQZOISFz0ou8_IGDPmeUBAdlb9Y2VilKANSXQAkEhs47_63ao10RwAvQvNiqbT0CUKwURd1JSB-ggUJ3A4tDC8OT2iTTtCsoM8pRExap5EQ7wRfQHmNmjMp491tEOCi3SiNOtUChNAKrFAXBJBeXNU" },
-];
+const topCatering = VENDORS.filter(v => v.category === 'catering');
+const topVenues = VENDORS.filter(v => v.category === 'venue');
+const results = VENDORS.slice(1, 4);
 
 export default function VendorSearchPage() {
   return (

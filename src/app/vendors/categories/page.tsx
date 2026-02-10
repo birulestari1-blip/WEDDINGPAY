@@ -1,18 +1,6 @@
 import React from "react";
 import Link from "next/link";
-
-const categories = [
-  { id: "catering", name: "Catering", sub: "Layanan Boga", icon: "restaurant", color: "bg-red-50 text-red-500" },
-  { id: "mua", name: "Makeup (MUA)", sub: "Rias Pengantin", icon: "face_5", color: "bg-rose-50 text-rose-500" },
-  { id: "venue", name: "Venue", sub: "Lokasi Acara", icon: "location_on", color: "bg-blue-50 text-blue-500" },
-  { id: "photo", name: "Photography", sub: "Dokumentasi", icon: "photo_camera", color: "bg-orange-50 text-orange-500" },
-  { id: "wo", name: "Wedding Organizer", sub: "Perencana Ahli", icon: "assignment_ind", color: "bg-purple-50 text-purple-500" },
-  { id: "mc", name: "MC", sub: "Master of Ceremony", icon: "mic", color: "bg-teal-50 text-teal-500" },
-  { id: "dance", name: "Tradisi & Tari", sub: "Seni Budaya", icon: "theater_comedy", color: "bg-amber-50 text-amber-500" },
-  { id: "music", name: "Music", sub: "Hiburan Musik", icon: "music_note", color: "bg-pink-50 text-pink-500" },
-  { id: "decor", name: "Decoration", sub: "Dekorasi Pelaminan", icon: "home_and_garden", color: "bg-green-50 text-green-500" },
-  { id: "florist", name: "Florist", sub: "Bunga Segar", icon: "local_florist", color: "bg-rose-50 text-rose-400" },
-];
+import { CATEGORIES, VENDORS } from "@/lib/mock-data";
 
 export default function CategoriesPage() {
   return (
@@ -74,14 +62,14 @@ export default function CategoriesPage() {
               </button>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              {categories.map((cat) => (
+              {CATEGORIES.map((cat) => (
                 <Link
                   key={cat.id}
                   href={`/vendors/${cat.id}`}
                   className="flex flex-col items-center bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all group active:scale-95"
                 >
-                  <div className={`size-12 rounded-full ${cat.color.split(' ')[0]} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
-                    <span className={`material-symbols-outlined ${cat.color.split(' ')[1]}`}>
+                  <div className={`size-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
+                    <span className={`material-symbols-outlined text-primary`}>
                       {cat.icon}
                     </span>
                   </div>
@@ -103,74 +91,42 @@ export default function CategoriesPage() {
               </button>
             </div>
             <div className="flex overflow-x-auto gap-4 pb-4 hide-scrollbar">
-              {/* Vendor Card 1 */}
-              <div className="min-w-[240px] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm">
-                <div className="h-32 w-full bg-gray-200 relative">
-                  <img
-                    alt="Catering Preview"
-                    className="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfj9xFNYGP-sb6FIPXyYx0hj6M9qSbXDDGkEvaShyYTBMrrd34mOmjftn96_LRalQ1mh8D_slTB3LhlisEMA1JRGXRK2MmL1oab_2PEbYQGd5F1Uw2L1g8Wx1-n15ZYdW6WdtS8qIPxQfNuwX2qIRKsK7PPIpNln5w5T5ry_kqmKzRzoBRC7gaZmhpTqpWSeRmZnuAHc55VxGiorzp3mREOIp19GDqF9BtBcQJTKn6quKCXm2H1VB7GpDaccWxWasYpsAXj3dJFCk7"
-                  />
-                  <div className="absolute top-2 right-2 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
-                    <span className="material-symbols-outlined text-yellow-400 text-xs fill-1">
-                      star
-                    </span>
-                    <span className="text-[10px] font-bold">4.9</span>
+              {VENDORS.map((v) => (
+                <Link key={v.id} href={`/vendors/${v.category}/${v.id}`} className="min-w-[240px] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm active:scale-[0.98] transition-all">
+                  <div className="h-32 w-full bg-gray-200 relative">
+                    <img
+                      alt={v.name}
+                      className="w-full h-full object-cover"
+                      src={v.image}
+                    />
+                    <div className="absolute top-2 right-2 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+                      <span className="material-symbols-outlined text-yellow-400 text-xs fill-1">
+                        star
+                      </span>
+                      <span className="text-[10px] font-bold">{v.rating}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="p-3">
-                  <h4 className="font-bold text-sm truncate">
-                    Royal Garden Catering
-                  </h4>
-                  <div className="flex items-center gap-1 mt-1 text-gray-500 text-[10px]">
-                    <span className="material-symbols-outlined text-[12px]">
-                      location_on
-                    </span>
-                    Jakarta Selatan
+                  <div className="p-3">
+                    <h4 className="font-bold text-sm truncate">
+                      {v.name}
+                    </h4>
+                    <div className="flex items-center gap-1 mt-1 text-gray-500 text-[10px]">
+                      <span className="material-symbols-outlined text-[12px]">
+                        location_on
+                      </span>
+                      {v.location}
+                    </div>
+                    <div className="mt-3 flex items-center justify-between">
+                      <p className="text-wedding-accent font-bold text-xs">
+                        Mulai {v.price}
+                      </p>
+                      <span className="text-[10px] text-gray-400 uppercase">
+                        {v.subCategory}
+                      </span>
+                    </div>
                   </div>
-                  <div className="mt-3 flex items-center justify-between">
-                    <p className="text-wedding-accent font-bold text-xs">
-                      Mulai Rp 45jt
-                    </p>
-                    <span className="text-[10px] text-gray-400">500 Pax</span>
-                  </div>
-                </div>
-              </div>
-              {/* Vendor Card 2 */}
-              <div className="min-w-[240px] bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm">
-                <div className="h-32 w-full bg-gray-200 relative">
-                  <img
-                    alt="MUA Preview"
-                    className="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmPHbEMcbJsBK5mefACR-_7IwqcIYqvZLQrw9tTHd_-aODu93aIgGPnh3dZEu1SBww1nw-ZQhJrb7ZFeJqFm7UUV4ckvYuuUYBvw7xYXjU43si-IMSeSwiK_ZpAfF59SzpwY6_bjOYNn5aqvW8ThNAtD_1HxsDRScd3qCGRddsAX8_NQZ7O3lrpjXwh9EWTSTA8wZnC3ArENthHWJ72t70ls9C5nsaxSCOKINRUdchrOK7MV0TfGmGMTEZTuuhKaMOuWn5snAAizHi"
-                  />
-                  <div className="absolute top-2 right-2 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
-                    <span className="material-symbols-outlined text-yellow-400 text-xs fill-1">
-                      star
-                    </span>
-                    <span className="text-[10px] font-bold">4.8</span>
-                  </div>
-                </div>
-                <div className="p-3">
-                  <h4 className="font-bold text-sm truncate">
-                    Lumina Bride Studio
-                  </h4>
-                  <div className="flex items-center gap-1 mt-1 text-gray-500 text-[10px]">
-                    <span className="material-symbols-outlined text-[12px]">
-                      location_on
-                    </span>
-                    Bandung
-                  </div>
-                  <div className="mt-3 flex items-center justify-between">
-                    <p className="text-wedding-accent font-bold text-xs">
-                      Mulai Rp 8.5jt
-                    </p>
-                    <span className="text-[10px] text-gray-400">
-                      Full Service
-                    </span>
-                  </div>
-                </div>
-              </div>
+                </Link>
+              ))}
             </div>
           </section>
         </main>

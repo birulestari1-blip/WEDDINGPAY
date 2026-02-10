@@ -1,34 +1,16 @@
 import React from "react";
 import Link from "next/link";
-
-const categoryData: Record<string, any> = {
-  catering: {
-    title: "Katalog Catering",
-    banner: "https://lh3.googleusercontent.com/aida-public/AB6AXuBsMXTWF3m3BdORbCw5Rdz0I7QxSsEghppJenojLKilbpyd-N5Oi8quk1nS-yDWDM4S5IMokIr4e4qzvCclj5OUBasp__ptAOk25Rdd7QO4amcysMwUrtOJsbzXHxhVPhXSUY-O6c-2dSJgYeErqh7xlatWVoMDSu7FxmgkJRKd9N9hdhgrvi8pB-nYhWTPBZ74RSDljQZ0IN-y6LgbJLrBp9tk-ONFyvweXUGN_SAZa-ptllUhFgQ6t9m76J_VAGL2mKlIQ3hz6qI8",
-    vendors: [
-      { id: 1, name: "Berkah Catering", price: "Rp 45.000/pax", rating: "4.9", location: "Jakarta Selatan", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBsMXTWF3m3BdORbCw5Rdz0I7QxSsEghppJenojLKilbpyd-N5Oi8quk1nS-yDWDM4S5IMokIr4e4qzvCclj5OUBasp__ptAOk25Rdd7QO4amcysMwUrtOJsbzXHxhVPhXSUY-O6c-2dSJgYeErqh7xlatWVoMDSu7FxmgkJRKd9N9hdhgrvi8pB-nYhWTPBZ74RSDljQZ0IN-y6LgbJLrBp9tk-ONFyvweXUGN_SAZa-ptllUhFgQ6t9m76J_VAGL2mKlIQ3hz6qI8" },
-      { id: 2, name: "Sakura Wedding Food", price: "Rp 65.000/pax", rating: "4.8", location: "Bandung", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDp9WyKA2xTXrbFUPmbuwoRXEjfxmNEMX126xHor8rqiForIm3yBZ6JwybIPJVM-oDMIi7zwRJyAJwCFN87biKQJWFTOdS9CjfWPdXyyZ78BNHgNs1qeaYVLT6ZLcENK2cZLzBxcXTxgFhkeowU_7uSyG9oEfvM8ibtrCVsb2aewki7f0S7HlU4iwfnTmDrkFicS7KYChxkOEq9RNj1O3unL2pIwoYmGeRLznOfKo-_bsbTsYXmGL2sIM1shS7pZVczHldkdrdyEZPy" },
-    ]
-  },
-  venue: {
-    title: "Katalog Venue",
-    banner: "https://lh3.googleusercontent.com/aida-public/AB6AXuCNTkPELSVcsFAhtC7wN0eQUL4yThvVN6GxklqeyFMBz_ijOSc_2fuYsT_744lYP0a2K6I7-Y0YZ8BPfvxqq_sED5QP_1d-L42AVKIMF_cd_EJ94obRveN3ftg40ClNYYn7YowXwhZ1MJG1C3y0aCtfG-n-PZ1OpXvzA31BEEIgKIW00q1R-LqtZgh91ZhEkjvq7Dzwu0G-VmUtOGCJL7VSNDZboYK05CwpeMEyNQoGZMXTOjtpEP06OSsxAiTGiO0GOWbMRNDGHQHm",
-    vendors: [
-      { id: 1, name: "Grand Ballroom Mulia", price: "Rp 75.000.000", rating: "5.0", location: "Senayan, Jakarta", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCNTkPELSVcsFAhtC7wN0eQUL4yThvVN6GxklqeyFMBz_ijOSc_2fuYsT_744lYP0a2K6I7-Y0YZ8BPfvxqq_sED5QP_1d-L42AVKIMF_cd_EJ94obRveN3ftg40ClNYYn7YowXwhZ1MJG1C3y0aCtfG-n-PZ1OpXvzA31BEEIgKIW00q1R-LqtZgh91ZhEkjvq7Dzwu0G-VmUtOGCJL7VSNDZboYK05CwpeMEyNQoGZMXTOjtpEP06OSsxAiTGiO0GOWbMRNDGHQHm" },
-      { id: 2, name: "The Glass House Garden", price: "Rp 45.000.000", rating: "4.9", location: "Bandung", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBK86C0IX7v0xDl_3yLPe-HIeMd5EEERTDivZLTooDiGwxqxaNWB5TvWICN-cZFFWuEcKextF8KeJX7-NbORWynajmj3F2Hwn5TAqilk69igpDFVtGNkkr7OuWqs30_QpX-GY8ckRMe6UZ_y36XFfLIgsJ96-T56AY7GX56KbMd03O4NlCv9DhoCTlKViHJ095NhTjhUJZckd0Eu-0NFW5x2I-J-4bvzBcy8gHYwQ3J9DOENHdpySOxUtW5tI3zlZO7vx75qpUVzM-0" },
-    ]
-  },
-  decor: {
-    title: "Katalog Dekorasi",
-    vendors: [
-      { id: 1, name: "Citra Decor Wedding", price: "Rp 25jt", rating: "4.9", location: "Jakarta", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCZocGfR6L3jt76kt-w7PrKMwwLh0OyN0jFLxwAhGSc-mXriE5wJae-9Qfxz7uTThMdyvHlyEDGoMH_44IsFMPoRVpPyDQBcAHYEh9Gh3mMjnIWo-IwsgBfDl4dAk38pKFmza5ENv63H8NrMc_PbRwQbRIdGlykP9eW-jDE1cP3AQWAoVPpxGW7MoUvJYBEIMl7fN7y1e9WxiSNGHo51jNUBaa0WShu31Yn7_NwsLYUrt_p_DM6Wi7iRwAXthL9ehJFn15GKksGfvgB" },
-    ]
-  }
-};
+import { VENDORS, CATEGORIES } from "@/lib/mock-data";
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
-  const category = (await params).category;
-  const data = categoryData[category] || { title: "Katalog Vendor", vendors: [] };
+  const categoryId = (await params).category;
+  const categoryInfo = CATEGORIES.find(c => c.id === categoryId);
+  const filteredVendors = VENDORS.filter(v => v.category === categoryId);
+
+  const data = {
+    title: `Katalog ${categoryInfo?.name || 'Vendor'}`,
+    vendors: filteredVendors
+  };
 
   return (
     <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen font-manrope">
@@ -57,7 +39,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
           {data.vendors.map((vendor: any) => (
             <Link
               key={vendor.id}
-              href={`/vendors/${category}/${vendor.id}`}
+              href={`/vendors/${categoryId}/${vendor.id}`}
               className="group flex flex-col overflow-hidden rounded-xl bg-white dark:bg-[#1c2226] border border-slate-200 dark:border-slate-800 shadow-sm transition-all active:scale-[0.98]"
             >
               <div className="relative w-full aspect-[16/10] overflow-hidden">

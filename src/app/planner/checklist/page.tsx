@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { CHECKLIST_ITEMS } from "@/lib/mock-data";
 
 export default function PlannerChecklistPage() {
   return (
@@ -63,59 +64,43 @@ export default function PlannerChecklistPage() {
           </div>
 
           <div className="space-y-6 px-4">
-            <div>
-              <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 px-1">12 Bulan Sebelum</h3>
-              <div className="space-y-3">
-                <div className="bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800 flex items-start gap-4">
-                  <div className="mt-1">
-                    <span className="material-symbols-outlined text-blue-600 fill-icon">check_circle</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-start">
-                      <h4 className="font-semibold text-gray-400 line-through">Tentukan Anggaran Pernikahan</h4>
-                      <span className="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Selesai</span>
+            {Array.from(new Set(CHECKLIST_ITEMS.map(i => i.group))).map(group => (
+              <div key={group}>
+                <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 px-1">{group}</h3>
+                <div className="space-y-3">
+                  {CHECKLIST_ITEMS.filter(i => i.group === group).map(item => (
+                    <div key={item.id} className={`bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800 flex items-start gap-4 ${item.status === 'active' ? 'ring-1 ring-blue-600/20' : ''}`}>
+                      <div className="mt-1">
+                        <span className={`material-symbols-outlined ${item.status === 'completed' ? 'text-blue-600 fill-1' : 'text-gray-300 dark:text-gray-700'}`}>
+                          {item.status === 'completed' ? 'check_circle' : 'radio_button_unchecked'}
+                        </span>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between items-start">
+                          <h4 className={`font-semibold ${item.status === 'completed' ? 'text-gray-400 line-through' : ''}`}>{item.title}</h4>
+                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${
+                            item.status === 'completed' ? 'bg-emerald-100 text-emerald-700' :
+                            item.status === 'active' ? 'bg-blue-600/10 text-blue-600' : 'bg-gray-100 text-gray-400'
+                          }`}>
+                            {item.status === 'completed' ? 'Selesai' : item.status === 'active' ? 'Proses' : 'Belum'}
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-3 mt-2">
+                          <span className={`flex items-center gap-1 text-xs ${item.date === 'Besok' ? 'text-orange-600 font-bold' : 'text-gray-400'}`}>
+                            <span className="material-symbols-outlined text-xs">{item.date === 'Besok' ? 'alarm' : 'calendar_today'}</span> {item.date}
+                          </span>
+                          {item.vendor && (
+                            <span className="flex items-center gap-1 text-xs text-blue-600 font-medium">
+                              <span className="material-symbols-outlined text-xs">storefront</span> {item.vendor}
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-
-                <div className="bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800 flex items-start gap-4">
-                  <div className="mt-1 text-gray-300 dark:text-gray-700">
-                    <span className="material-symbols-outlined">radio_button_unchecked</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-start">
-                      <h4 className="font-semibold">Booking Gedung Utama</h4>
-                      <span className="bg-blue-600/10 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Proses</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3 px-1">6 Bulan Sebelum</h3>
-              <div className="space-y-3">
-                <div className="bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-100 dark:border-gray-800 flex items-start gap-4 ring-1 ring-blue-600/20">
-                  <div className="mt-1 text-gray-300 dark:text-gray-700">
-                    <span className="material-symbols-outlined">radio_button_unchecked</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex justify-between items-start">
-                      <h4 className="font-semibold">Fitting Baju Pengantin</h4>
-                      <span className="bg-orange-100 text-orange-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Belum</span>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-3 mt-2">
-                      <span className="flex items-center gap-1 text-xs text-orange-600 font-bold">
-                        <span className="material-symbols-outlined text-xs">alarm</span> Besok
-                      </span>
-                      <span className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
-                        <span className="material-symbols-outlined text-xs">content_cut</span> Designer: Anna V.
-                      </span>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </main>
 
