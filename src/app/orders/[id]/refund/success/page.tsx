@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { use } from "react";
 import Link from "next/link";
 
-export default function RefundSuccessPage() {
+export default function RefundSuccessPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   return (
     <div className="bg-background-light dark:bg-background-dark font-manrope text-[#111813] dark:text-white antialiased min-h-screen">
       <div className="relative flex h-screen max-w-md mx-auto flex-col bg-white dark:bg-background-dark overflow-x-hidden shadow-2xl">

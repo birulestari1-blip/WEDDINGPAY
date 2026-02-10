@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { use } from "react";
 import Link from "next/link";
 
-export default function ContractPage() {
+export default function ContractPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   return (
     <div className="bg-background-light dark:bg-background-dark min-h-screen text-[#111318] dark:text-gray-100 font-manrope">
       <div className="max-w-[480px] mx-auto bg-white dark:bg-[#1a212e] min-h-screen shadow-sm relative overflow-x-hidden">

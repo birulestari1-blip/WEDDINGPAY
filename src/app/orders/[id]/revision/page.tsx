@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { use } from "react";
 import Link from "next/link";
 
-export default function RevisionPage() {
+export default function RevisionPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   return (
     <div className="bg-background-light dark:bg-background-dark text-[#111318] dark:text-gray-100 font-manrope min-h-screen">
       {/* Top Navigation Bar */}
